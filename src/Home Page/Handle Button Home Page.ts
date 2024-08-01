@@ -4,6 +4,7 @@ import HandleDomUpdate from "./Handle Update Account/Handle Update Account"
 import { domainBE } from "../URL"
 
 
+
 const handleButtonEditAccount = (oldUsename: string, oldEmail: string, oldPassword: string) => {
     const tagButton = document.querySelector(".button__edit") as HTMLButtonElement
     const tagButtonLogOut = document.querySelector(".button__logout") as HTMLButtonElement
@@ -119,10 +120,8 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                             withCredentials: true
                         }).then(response => {
                             const res = response.data
-                            console.log(res.valid);
-
                             if (res.valid) {
-                                navgation("/")
+                                navgation("/sign-up")
                                 handleButtonEditAccount(
                                     oldUsename,
                                     oldEmail,
@@ -152,9 +151,9 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                             }).then(response => {
                                 const res = response.data
                                 console.log(res.valid);
-                                
+
                                 if (res.valid) {
-                                    navgation("/")
+                                    navgation("/sign-up")
                                     handleButtonEditAccount(
                                         oldUsename,
                                         oldEmail,
@@ -172,12 +171,12 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                             divEmail.removeAttribute("contentEditable")
                             divPassword.removeAttribute("contentEditable")
 
-                           
+
                         }
                     }
                 }
             } else {
-                
+
                 if (alertCurrentPassword) return alertCurrentPassword.classList.add("invalid")
             }
             break;

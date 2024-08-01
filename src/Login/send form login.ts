@@ -3,6 +3,7 @@ import HandleDomSignUp from "./Handle Dom Sign Up/Handle Dom Sign Up";
 import { domainBE } from "../URL";
 
 
+
 const sendFormSignup = (navigation: any) => {
     const email = document.getElementById(`signUp-email`) as HTMLInputElement;
     const password = document.getElementById(`signUp-password`) as HTMLInputElement;

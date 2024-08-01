@@ -3,6 +3,7 @@ import { domainBE } from "../URL";
 
 
 
+
 const sendVerifyAccount = (navigation: (string: string) => void) => {
     const verifyAccount = (document.getElementById("verify__account__code") as HTMLInputElement);
     const regex = /^\d{6}$/;

@@ -1,0 +1,12 @@
+.login__email-alert {
+    transition: .3s linear;
+    -webkit-transition: .3s linear;
+    -moz-transition: .3s linear;
+    -ms-transition: .3s linear;
+    -o-transition: .3s linear;
+    opacity: 0;
+}
+
+.alert-signIn {
+    opacity: 1;
+}

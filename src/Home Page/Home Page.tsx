@@ -11,7 +11,7 @@ import { listData } from "../Login/Handle Dom Sign Up/List Data";
 import "./Home Page.css"
 import InfoInput from "../Model CSS/Info Input/Info Input";
 const HomePage = () => {
-    const navigate = useNavigate();
+    const navigation = useNavigate();
     const { infoUser, callUser } = useCallInfoUser();
 
     useEffect(() => {
@@ -25,22 +25,25 @@ const HomePage = () => {
     }, [callUser]);
 
     useEffect(() => {
-        if (infoUser.length == 0) return
+
+
+        if (!infoUser.haveData) return;
+
+
         switch (true) {
             case !infoUser.login:
-                navigate("/sign-up");
-                console.log(infoUser);
+                navigation("/sign-up");
 
                 break;
             case !infoUser.verified:
-                navigate("/verify-account");
+                navigation("/verify-account");
                 break;
             default:
                 // Không cần điều hướng, người dùng đã đăng nhập và xác minh
                 break;
         }
 
-    }, [infoUser]);
+    }, [infoUser, navigation]);
 
     if (infoUser.length == 0) {
         return <div  >Loading...</div>;
@@ -108,7 +111,7 @@ const HomePage = () => {
                     Chỉnh Sửa
                 </Button>
                 <Button className="button__logout" name="logout" onClick={() => {
-                    handleBuuttonLogOut(navigate,
+                    handleBuuttonLogOut(navigation,
                         infoUser.username,
                         infoUser.email,
                         infoUser.password

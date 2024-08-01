@@ -3,6 +3,7 @@ import axios from 'axios';
 import { domainBE } from '../URL';
 
 
+
 interface Options {
     infoUser: {
         length: number,
@@ -11,7 +12,8 @@ interface Options {
         // Add other user properties here
         email: string,
         username: string,
-        password: string
+        password: string,
+        haveData: boolean,
     },
     error: any, // Added error state for better error handling
     callUser: () => Promise<void>, // Added async function for making API call
@@ -22,6 +24,7 @@ const useCallInfoUser = create<Options>((set) => ({
         length: 0,
         login: false,
         verified: false,
+        haveData: false,
         // Add other user properties here
         email: "",
         username: "",
@@ -41,16 +44,31 @@ const useCallInfoUser = create<Options>((set) => ({
                     password: string
                 }
             }) => {
-                return set(() => ({
-                    infoUser: {
-                        length: 1,
-                        login: response.data.login,
-                        verified: response.data.verified,
-                        email: response.data.email,
-                        username: response.data.username,
-                        password: response.data.password
-                    }, error: null
-                })); // Update info and clear error
+                if (response.data.login) {
+                    return set(() => ({
+                        infoUser: {
+                            length: 1,
+                            login: response.data.login,
+                            verified: response.data.verified,
+                            email: response.data.email,
+                            username: response.data.username,
+                            password: response.data.password,
+                            haveData: true,
+                        }, error: null
+                    })); // Update info and clear error
+                } else {
+                    return set(() => ({
+                        infoUser: {
+                            length: 0,
+                            login: false,
+                            verified: false,
+                            haveData: true,
+                            email: "",
+                            username: "",
+                            password: ""
+                        }, error: null
+                    })); // Update info and clear error
+                }
 
             })
         } catch (error) {

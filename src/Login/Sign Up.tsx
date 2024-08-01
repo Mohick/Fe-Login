@@ -7,11 +7,45 @@ import ListUl from "../Model CSS/List Ul/List Ul"
 import HandleDomSignUp from "./Handle Dom Sign Up/Handle Dom Sign Up"
 import { listData } from "./Handle Dom Sign Up/List Data"
 import { sendFormSignup } from "./send form login"
+import { useCallInfoUser } from "../Store/Repository User"
+import { useEffect } from "react"
 
 
 
 const SignUp = () => {
     const navigation = useNavigate()
+
+    const { infoUser, callUser } = useCallInfoUser();
+
+    useEffect(() => {
+        let allow = true;
+        if (allow) {
+            callUser();
+        }
+        return () => {
+            allow = false;
+        };
+    }, [callUser]);
+
+    useEffect(() => {
+
+        if (infoUser.length == 0) return;;
+
+        switch (true) {
+            case infoUser.login:
+                navigation("/");
+                break;
+            case !infoUser.verified:
+                navigation("/verify-account");
+                break;
+            default:
+                // Không cần điều hướng, người dùng đã đăng nhập và xác minh
+                break;
+        }
+
+    }, [infoUser, navigation]);
+
+
     return <div className="min-w-screen min-h-screen flex justify-center items-center">
         <FrameLayout className="w-[500px]" border={"bordered"}>
 
