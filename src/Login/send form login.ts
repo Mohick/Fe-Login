@@ -1,5 +1,6 @@
 import axios from "axios";
 import HandleDomSignUp from "./Handle Dom Sign Up/Handle Dom Sign Up";
+import { domainBE } from "../URL";
 
 
 const sendFormSignup = (navigation: any) => {
@@ -20,7 +21,7 @@ const sendFormSignup = (navigation: any) => {
             username: username.value.trim() // corrected 'usename' to 'username'
         };
 
-        axios?.post('http://localhost:8080/createUser', dataFormUser, {
+        axios?.post(domainBE + '/createUser', dataFormUser, {
             headers: {
                 'Content-Type': 'application/json'
             },

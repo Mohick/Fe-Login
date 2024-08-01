@@ -1,7 +1,7 @@
 
 
 
-const domainBE = "http://localhost:8080"
+const domainBE = "https://be-login.onrender.com".trim()
 
 
 export {domainBE}
