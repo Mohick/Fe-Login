@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.valid {
+    color: rgb(34 197 94);
+}
+
+.invalid {
+    color: rgb(239 68 68);
+}
+
+.disable {
+    filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+}
+

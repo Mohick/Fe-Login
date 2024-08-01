@@ -1,0 +1,45 @@
+.home__page__alert--email,
+.home__page__alert--password,
+.home__page__alert--username {
+    opacity: 0;
+}
+
+#home__page__info__username {
+    position: relative;
+}
+
+.home__page__info--unline {
+    position: absolute;
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    width: 0;
+    top: calc(100% - 2px);
+    left: 0;
+    height: 2px;
+    background: #000;
+}
+
+.home__page__info--unline--set--width {
+    width: 100%;
+}
+
+#home__page__edit {
+    overflow: hidden;
+    height: 0;
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+}
+
+#home__page__edit.home__page__edit--active {
+    height: 150px;
+}
+
+.active--alert {
+    opacity: 1;
+}
