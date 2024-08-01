@@ -1,5 +1,4 @@
 import { cva, VariantProps } from "class-variance-authority"
-import { ClassProp } from "class-variance-authority/types"
 import { FC, HTMLAttributes } from "react"
 import { cn } from "../../Tailwind Merge/cn"
 

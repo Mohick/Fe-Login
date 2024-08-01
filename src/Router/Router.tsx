@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, Suspense } from "react";
-import { useCallInfoUser } from "../Store/Repository User";
+import { lazy } from "react";
+
 
 
 const SignUp = lazy(() => import("../Login/Sign Up"))

@@ -25,19 +25,18 @@ const listData: {
         }
     ];
 
-const rulePasswords: {
-    length: RegExp,
-    lowercase: RegExp,
-    uppercase: RegExp,
-    number: RegExp,
-    specialCharacter: RegExp
-} = {
+
+interface RulePasswords {
+    [key: string]: RegExp;
+}
+
+const rulePasswords: RulePasswords = {
     length: /^.{8,50}$/,
     lowercase: /[a-z]/,
     uppercase: /[A-Z]/,
     number: /\d/,
     specialCharacter: /[@$!%*?&]/
 }
-export { listData,rulePasswords }
+export { listData, rulePasswords }
 
 

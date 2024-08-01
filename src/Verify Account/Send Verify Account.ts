@@ -15,7 +15,7 @@ const sendVerifyAccount = (navigation: (string: string) => void) => {
                 'Content-Type': 'application/json'
             },
             withCredentials: true // Đảm bảo r��ng cookie được gửi cùng với yêu cầu
-        }).then((response) => {
+        }).then(response => {
             if (response.data.valid) {
                 navigation("/")
             } else {
@@ -41,12 +41,12 @@ const createNewVerifyAccount = () => {
     const btnReSendVerifyAccount = document.querySelector(".btn__re__send--verify")
 
     if (!btnReSendVerifyAccount?.classList.contains("disable")) {
-        axios.post(`${domainBE.trim()}/re-new-verify`,{}, {
+        axios.post(`${domainBE.trim()}/re-new-verify`, {}, {
             headers: {
                 'Content-Type': 'application/json'
             },
             withCredentials: true // Đảm bảo r��ng cookie được gửi cùng với yêu cầu
-        }).then((response) => {
+        }).then(() => {
             countDownCreateNewVerifyAccount()
             btnReSendVerifyAccount?.classList.add("disable");
         })

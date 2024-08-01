@@ -26,7 +26,7 @@ const sendFormSignup = (navigation: any) => {
                 'Content-Type': 'application/json'
             },
             withCredentials: true // Đảm bảo rằng cookie được gửi cùng với yêu cầu
-        }).then((response) => {
+        }).then(response => {
             const res = response.data
             if (res.valid) {
                 navigation("/");

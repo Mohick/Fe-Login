@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { countDownCreateNewVerifyAccount, createNewVerifyAccount, sendVerifyAccount } from "./Send Verify Account"
 import { useCallInfoUser } from "../Store/Repository User"
 import { useEffect } from "react"

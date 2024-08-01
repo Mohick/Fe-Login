@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes, InputHTMLAttributes } from "react"
+import { FC,  InputHTMLAttributes } from "react"
 import Label from "./Label/Label"
 import Input from "./Input/Input"
 

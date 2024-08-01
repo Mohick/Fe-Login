@@ -40,8 +40,8 @@ class HandleDomSignUp {
         const alert: NodeListOf<HTMLLIElement> = document.querySelectorAll('.list-item');
 
         alert.forEach((element) => {
-            const getName: string = element.getAttribute("data-name");
-            const getRegex = rulePasswords[`${getName}`]
+            const getName: string | any = element.getAttribute("data-name");
+            const getRegex:any = rulePasswords[`${getName}`]
             if (getRegex.test(input.value.trim())) {
                 element.classList.add("valid");
                 element.classList.remove("invalid")
