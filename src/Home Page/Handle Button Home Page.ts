@@ -126,11 +126,7 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                             const res = response.data
                             if (res.valid) {
                                 navgation("/sign-in")
-                                handleButtonEditAccount(
-                                    oldUsename,
-                                    oldEmail,
-                                    oldPassword
-                                )
+
                             } else {
                                 alertCurrentPassword.innerHTML = res.message
                             }
@@ -154,8 +150,6 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                                 withCredentials: true
                             }).then(response => {
                                 const res = response.data
-                                console.log(res.valid);
-
                                 if (res.valid) {
                                     navgation("/sign-in")
                                     handleButtonEditAccount(
@@ -165,22 +159,9 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                                     )
                                 } else {
                                     alertCurrentPassword.innerHTML = res.message
-                                    handleButtonEditAccount(
-                                        oldUsename,
-                                        oldEmail,
-                                        oldPassword
-                                    )
+
                                 }
                             })
-                            tagButtonLogOut.innerHTML = `Đăng Xuất`
-                            tagButtonLogOut.name = "logout"
-                            tagButton.innerHTML = `Chinh Sửa`
-                            tagButton.name = "disable"
-                            divUsername.removeAttribute("contentEditable")
-                            divEmail.removeAttribute("contentEditable")
-                            divPassword.removeAttribute("contentEditable")
-
-
                         }
                     }
                 }
