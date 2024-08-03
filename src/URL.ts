@@ -1,7 +1,7 @@
 
 
 
-const domainBE = " https://be-login.onrender.com".trim()
+const domainBE = " https://login-with-jwt.onrender.com".trim()
 
 
 export {domainBE}
