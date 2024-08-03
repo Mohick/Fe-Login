@@ -10,6 +10,7 @@ import ListUl from "../Model CSS/List Ul/List Ul";
 import { listData } from "../Login/Handle Dom Sign Up/List Data";
 import "./Home Page.css"
 import InfoInput from "../Model CSS/Info Input/Info Input";
+import EndLoading from "../Loading/End Loading";
 const HomePage = () => {
     const navigation = useNavigate();
     const { infoUser, callUser } = useCallInfoUser();
@@ -32,7 +33,7 @@ const HomePage = () => {
 
         switch (true) {
             case !infoUser.login:
-                navigation("/sign-up");
+                navigation("/sign-in");
 
                 break;
             case !infoUser.verified:
@@ -45,12 +46,10 @@ const HomePage = () => {
 
     }, [infoUser, navigation]);
 
-    if (infoUser.length == 0) {
-        return <div  >Loading...</div>;
-    }
 
     return <div className="flex justify-center items-center min-h-screen min-w-screen">
-        <FrameLayout className="min-w-[600px]  flex flex-col gap-2">
+        <EndLoading />
+        <FrameLayout className="w-[90%] sm:w-[600px]  flex flex-col gap-2">
             <Title>
                 Trang Chủ
             </Title>
@@ -92,7 +91,7 @@ const HomePage = () => {
                 </div>
             </div>
             <div id="home__page__edit" className="relative ">
-                <ListUl className="grid grid-cols-2 justify-between mt-2 " classItems="list-item" listData={listData} />
+                <ListUl className="grid grid-cols-1 sm:grid-cols-2 justify-between mt-2 " classItems="list-item" listData={listData} />
                 <div className="mt-2">
                     <InfoInput id="home__page__current__password" typeInput="password" nameLabel="Mật Khẩu Hiện Tại">
                         Nhập Mật Khẩu Hiện Tại Của Bạn !
@@ -100,7 +99,7 @@ const HomePage = () => {
 
                 </div>
             </div>
-            <div className="grid grid-cols-2 mt-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 mt-2 gap-3">
                 <Button name="disable" className="button__edit" onClick={() => {
                     handleButtonEditAccount(
                         infoUser.username,

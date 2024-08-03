@@ -9,6 +9,8 @@ import { listData } from "./Handle Dom Sign Up/List Data"
 import { sendFormSignup } from "./send form login"
 import { useCallInfoUser } from "../Store/Repository User"
 import { useEffect } from "react"
+import InitLoading from "../Loading/Start Loading"
+import EndLoading from "../Loading/End Loading"
 
 
 
@@ -29,7 +31,7 @@ const SignUp = () => {
 
     useEffect(() => {
 
-        if (infoUser.length == 0) return;;
+        if (infoUser.length == 0) return;
 
         switch (true) {
             case infoUser.login:
@@ -47,7 +49,8 @@ const SignUp = () => {
 
 
     return <div className="min-w-screen min-h-screen flex justify-center items-center">
-        <FrameLayout className="w-[500px]" border={"bordered"}>
+        <EndLoading />
+        <FrameLayout className="w-[90%] sm:w-[500px]" border={"bordered"}>
 
             <div className="container mx-auto mt-10">
                 <Title>
@@ -66,7 +69,7 @@ const SignUp = () => {
                 </div>
                 <div className="mb-4">
                     <InfoInput id="signUp-password" required onChange={HandleDomSignUp.password} typeInput="password" nameLabel="Mật Khẩu" >
-                        <ListUl className="grid grid-cols-2" classItems="list-item" listData={listData} />
+                        <ListUl className="grid grid-cols-1 sm:grid-cols-2" classItems="list-item" listData={listData} />
                     </InfoInput>
                 </div>
                 <div className="mb-4">
@@ -74,12 +77,24 @@ const SignUp = () => {
                         Nhập lại tương tự mật khẩu trên !
                     </InfoInput>
                 </div>
-                <div className="w-full flex justify-end">
-                    <Button onClick={() => {
-                        sendFormSignup(navigation)
-                    }}>
-                        Đăng Ký
+                <Button onClick={() => navigation("/sign-up")} className="w-full" backgroundColor={"success"}>
+                    Đăng Ký
+                </Button>
+                <div className=" grid-cols-1 mt-6 grid sm:grid-cols-2 gap-2">
+
+                    <Button onClick={() => navigation("/sign-in")} className="w-full" backgroundColor={"success"}>
+                        Đăng Nhập
                     </Button>
+
+                    <div className="w-full flex justify-end">
+                        <Button onClick={() => {
+                            sendFormSignup(navigation)
+                        }}>
+                            Đăng Ký
+                        </Button>
+                    </div>
+
+
                 </div>
             </div>
 

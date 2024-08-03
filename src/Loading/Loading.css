@@ -1,0 +1,19 @@
+.endLoading {
+    animation: endLoading .2s linear forwards;
+    -webkit-animation: endLoading .2s linear forwards;
+}
+
+@keyframes endLoading {
+
+    0% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 0;
+    }
+
+    100% {
+        display: none;
+    }
+}

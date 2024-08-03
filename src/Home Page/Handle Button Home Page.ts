@@ -99,7 +99,11 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
 
     switch (tagButtonLogOut.name) {
         case "logout":
-            navgation("/")
+            axios.post(domainBE + "/logout", {}, {
+                withCredentials: true
+            }).then(() => {
+                navgation("/sign-in")
+            })
             break;
         case "exchange":
             const divCurrentPassword = document.getElementById("home__page__current__password") as HTMLInputElement
@@ -121,7 +125,7 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                         }).then(response => {
                             const res = response.data
                             if (res.valid) {
-                                navgation("/sign-up")
+                                navgation("/sign-in")
                                 handleButtonEditAccount(
                                     oldUsename,
                                     oldEmail,
@@ -153,7 +157,7 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                                 console.log(res.valid);
 
                                 if (res.valid) {
-                                    navgation("/sign-up")
+                                    navgation("/sign-in")
                                     handleButtonEditAccount(
                                         oldUsename,
                                         oldEmail,
@@ -161,6 +165,11 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                                     )
                                 } else {
                                     alertCurrentPassword.innerHTML = res.message
+                                    handleButtonEditAccount(
+                                        oldUsename,
+                                        oldEmail,
+                                        oldPassword
+                                    )
                                 }
                             })
                             tagButtonLogOut.innerHTML = `Đăng Xuất`
@@ -191,6 +200,7 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
             break;
     }
 }
+
 
 
 export { handleButtonEditAccount, handleBuuttonLogOut }

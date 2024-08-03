@@ -6,6 +6,8 @@ import FrameLayout from "../Model CSS/Frame Layout/Frame Layout"
 import Title from "../Model CSS/Title/Title"
 import InfoInput from "../Model CSS/Info Input/Info Input"
 import Button from "../Model CSS/Button/Button"
+import InitLoading from "../Loading/Start Loading"
+import EndLoading from "../Loading/End Loading"
 
 
 
@@ -24,10 +26,10 @@ const VerifyAccount = () => {
         }
     }, [])
     useEffect(() => {
-        
+
         if (infoUser.length == 0) return;
         let allow = true;
-        
+
         switch (true) {
             case !infoUser.login:
                 navigation("/sign-in");
@@ -47,11 +49,13 @@ const VerifyAccount = () => {
     }, [
         infoUser
     ])
-    console.log(infoUser );
-    
+    if (infoUser.length == 0) return <InitLoading />;
+
+
     return infoUser.verified == false ?
         <div className="flex min-w-screen min-h-screen justify-center items-center">
-            <FrameLayout>
+            <EndLoading />
+            <FrameLayout className="w-[90%] sm:w-[auto]">
                 <Title>
                     Xác Minh Tài Khoản
                 </Title>
