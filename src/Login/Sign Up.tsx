@@ -9,7 +9,6 @@ import { listData } from "./Handle Dom Sign Up/List Data"
 import { sendFormSignup } from "./send form login"
 import { useCallInfoUser } from "../Store/Repository User"
 import { useEffect } from "react"
-import InitLoading from "../Loading/Start Loading"
 import EndLoading from "../Loading/End Loading"
 
 
