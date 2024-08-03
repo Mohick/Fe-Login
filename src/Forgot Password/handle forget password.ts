@@ -14,7 +14,7 @@ const handleForgetPasswords = (navigation: (string: string) => void) => {
     } else {
         alertEmail.classList.remove("valid");
         alertEmail.classList.add("invalid")
-        
+        navigation('/')
     }
 }
 
