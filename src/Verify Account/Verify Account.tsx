@@ -49,9 +49,8 @@ const VerifyAccount = () => {
     }, [
         infoUser
     ])
-    if (infoUser.length == 0) return <InitLoading />;
-
-
+    
+    if (!infoUser.haveData) return <InitLoading />
     return infoUser.verified == false ?
         <div className="flex min-w-screen min-h-screen justify-center items-center">
             <EndLoading />

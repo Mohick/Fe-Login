@@ -11,6 +11,7 @@ import { listData } from "../Login/Handle Dom Sign Up/List Data";
 import "./Home Page.css"
 import InfoInput from "../Model CSS/Info Input/Info Input";
 import EndLoading from "../Loading/End Loading";
+import InitLoading from "../Loading/Start Loading";
 const HomePage = () => {
     const navigation = useNavigate();
     const { infoUser, callUser } = useCallInfoUser();
@@ -24,7 +25,7 @@ const HomePage = () => {
             allow = false;
         };
     }, [callUser]);
-    
+
     useEffect(() => {
 
 
@@ -46,7 +47,7 @@ const HomePage = () => {
 
     }, [infoUser, navigation]);
 
-
+    if (!infoUser.haveData) return <InitLoading />
     return <div className="flex justify-center items-center min-h-screen min-w-screen">
         <EndLoading />
         <FrameLayout className="w-[90%] sm:w-[600px]  flex flex-col gap-2">

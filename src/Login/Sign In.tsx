@@ -9,6 +9,7 @@ import { useCallInfoUser } from "../Store/Repository User"
 import { useEffect } from "react"
 
 import EndLoading from "../Loading/End Loading"
+import InitLoading from "../Loading/Start Loading"
 
 
 
@@ -46,7 +47,7 @@ const SignIn = () => {
         }
 
     }, [infoUser, navigation]);
-
+    if (!infoUser.haveData) return <InitLoading />
     return <div className="min-h-screen flex justify-center items-center min-w-screen">
         <EndLoading />
         <FrameLayout className="w-[90%] sm:w-[500px]">

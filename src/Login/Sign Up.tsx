@@ -10,6 +10,7 @@ import { sendFormSignup } from "./send form login"
 import { useCallInfoUser } from "../Store/Repository User"
 import { useEffect } from "react"
 import EndLoading from "../Loading/End Loading"
+import InitLoading from "../Loading/Start Loading"
 
 
 
@@ -46,7 +47,7 @@ const SignUp = () => {
 
     }, [infoUser, navigation]);
 
-
+    if (!infoUser.haveData) return <InitLoading />
     return <div className="min-w-screen min-h-screen flex justify-center items-center">
         <EndLoading />
         <FrameLayout className="w-[90%] sm:w-[500px]" border={"bordered"}>
