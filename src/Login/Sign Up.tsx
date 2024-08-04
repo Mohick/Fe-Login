@@ -76,9 +76,6 @@ const SignUp = () => {
                         Nhập lại tương tự mật khẩu trên !
                     </InfoInput>
                 </div>
-                <Button onClick={() => navigation("/sign-up")} className="w-full" backgroundColor={"success"}>
-                    Đăng Ký
-                </Button>
                 <div className=" grid-cols-1 mt-6 grid sm:grid-cols-2 gap-2">
 
                     <Button onClick={() => navigation("/sign-in")} className="w-full" backgroundColor={"success"}>
@@ -86,7 +83,7 @@ const SignUp = () => {
                     </Button>
 
                     <div className="w-full flex justify-end">
-                        <Button onClick={() => {
+                        <Button className="w-full" onClick={() => {
                             sendFormSignup(navigation)
                         }}>
                             Đăng Ký
