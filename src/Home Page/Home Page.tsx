@@ -70,7 +70,7 @@ const HomePage = () => {
             <div className="relative">
                 <Label>email</Label>
                 <div className="home__page__alert--email valid text-xs">
-                    Vui lòng Nhập Email Mới Hoặc Dữ Nguyên !
+                    Vui lòng Nhập Email Mới Hoặc Giữ Nguyên !
                 </div>
                 <div id="home__page__info__email" className="text-base outline-none min-h-[1.5rem] max-h-[1.5rem]">
                     {infoUser.email}
@@ -82,7 +82,7 @@ const HomePage = () => {
             <div className="relative">
                 <Label>Mật Khẩu </Label>
                 <div className="home__page__alert--password text-yellow-500 text-xs">
-                    Vui lòng Nhập Mật Khẩu Mới Hoặc Dữ Nguyên !
+                    Vui lòng Nhập Mật Khẩu Mới Hoặc Giữ Nguyên !
                 </div>
                 <div id="home__page__info__password" className="text-base outline-none min-h-[1.5rem] max-h-[1.5rem]">
                     {infoUser.password}

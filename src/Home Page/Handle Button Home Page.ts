@@ -129,6 +129,8 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
 
                             } else {
                                 alertCurrentPassword.innerHTML = res.message
+                                alertCurrentPassword.classList.add("invalid")
+                                alertCurrentPassword.classList.remove("valid")
                             }
                         })
 
@@ -159,6 +161,8 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                                     )
                                 } else {
                                     alertCurrentPassword.innerHTML = res.message
+                                    alertCurrentPassword.classList.add("invalid")
+                                    alertCurrentPassword.classList.remove("valid")
 
                                 }
                             })
