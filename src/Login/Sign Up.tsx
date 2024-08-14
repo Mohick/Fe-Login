@@ -11,6 +11,7 @@ import { useCallInfoUser } from "../Store/Repository User"
 import { useEffect } from "react"
 import EndLoading from "../Loading/End Loading"
 import InitLoading from "../Loading/Start Loading"
+import { motion } from "framer-motion"
 
 
 
@@ -50,52 +51,67 @@ const SignUp = () => {
     if (!infoUser.haveData) return <InitLoading />
     return <div className="min-w-screen min-h-screen flex justify-center items-center">
         <EndLoading />
-        <FrameLayout className="w-[90%] sm:w-[500px]" border={"bordered"}>
+        <motion.div
+            initial={{
+                opacity: 0,
+                height: 0,
+                overflow: 'hidden',
+            }}
+            animate={{
+                opacity: 1,
+                height: "auto",
+            }}
+            transition={{
+                duration: 0.5,
+                type: "just",
+                delay: 0.3
+            }}
+        >
+            <FrameLayout className="w-[90%] sm:w-[500px]" border={"bordered"}>
 
-            <div className="container mx-auto mt-10">
-                <Title>
-                    Đăng Ký
-                </Title>
+                <div className="container mx-auto mt-10">
+                    <Title>
+                        Đăng Ký
+                    </Title>
 
-                <div className="mb-4">
-                    <InfoInput id="signUp-usename" onChange={HandleDomSignUp.usename} typeInput="text" required minLength={6} maxLength={30} nameLabel="Tên Tài Khoản" >
-                        Tên Tài Khoản Phải Có Ít Nhất 6 ký tự và tối đa 30 ký và tự chỉ dùng bản chữ latinh!
-                    </InfoInput>
-                </div>
-                <div className="mb-4">
-                    <InfoInput id="signUp-email" required onChange={HandleDomSignUp.email} typeInput="email" nameLabel="email" >
-                        Nhập Email Của Bạn  !
-                    </InfoInput>
-                </div>
-                <div className="mb-4">
-                    <InfoInput id="signUp-password" required onChange={HandleDomSignUp.password} typeInput="password" nameLabel="Mật Khẩu" >
-                        <ListUl className="grid grid-cols-1 sm:grid-cols-2" classItems="list-item" listData={listData} />
-                    </InfoInput>
-                </div>
-                <div className="mb-4">
-                    <InfoInput id="signUp-confirmPassword" required onChange={HandleDomSignUp.confirmPassword} typeInput="password" nameLabel="Nhập Lại Mật Khẩu" >
-                        Nhập lại tương tự mật khẩu trên !
-                    </InfoInput>
-                </div>
-                <div className=" grid-cols-1 mt-6 grid sm:grid-cols-2 gap-2">
-
-                    <Button onClick={() => navigation("/sign-in")} className="w-full" backgroundColor={"success"}>
-                        Đăng Nhập
-                    </Button>
-
-                    <div className="w-full flex justify-end">
-                        <Button className="w-full" onClick={() => {
-                            sendFormSignup(navigation)
-                        }}>
-                            Đăng Ký
-                        </Button>
+                    <div className="mb-4">
+                        <InfoInput id="signUp-usename" onChange={HandleDomSignUp.usename} typeInput="text" required minLength={6} maxLength={30} nameLabel="Tên Tài Khoản" >
+                            Tên Tài Khoản Phải Có Ít Nhất 6 ký tự và tối đa 30 ký và tự chỉ dùng bản chữ latinh!
+                        </InfoInput>
                     </div>
+                    <div className="mb-4">
+                        <InfoInput id="signUp-email" required onChange={HandleDomSignUp.email} typeInput="email" nameLabel="email" >
+                            Nhập Email Của Bạn  !
+                        </InfoInput>
+                    </div>
+                    <div className="mb-4">
+                        <InfoInput id="signUp-password" required onChange={HandleDomSignUp.password} typeInput="password" nameLabel="Mật Khẩu" >
+                            <ListUl className="grid grid-cols-1 sm:grid-cols-2" classItems="list-item" listData={listData} />
+                        </InfoInput>
+                    </div>
+                    <div className="mb-4">
+                        <InfoInput id="signUp-confirmPassword" required onChange={HandleDomSignUp.confirmPassword} typeInput="password" nameLabel="Nhập Lại Mật Khẩu" >
+                            Nhập lại tương tự mật khẩu trên !
+                        </InfoInput>
+                    </div>
+                    <div className=" grid-cols-1 mt-6 grid sm:grid-cols-2 gap-2">
 
+                        <Button onClick={() => navigation("/sign-in")} className="w-full" backgroundColor={"success"}>
+                            Đăng Nhập
+                        </Button>
 
+                        <div className="w-full flex justify-end">
+                            <Button className="w-full" onClick={() => {
+                                sendFormSignup(navigation)
+                            }}>
+                                Đăng Ký
+                            </Button>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-        </FrameLayout >
+            </FrameLayout >
+        </motion.div>
     </div >
 
 }

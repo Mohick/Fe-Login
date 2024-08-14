@@ -1,6 +1,7 @@
 import axios from "axios";
 import { containerRegex } from "../Regex/Manager Regex";
-import { domainBE } from "../URL";
+import { obEnv } from "../Evironment/Evironment";
+
 
 
 
@@ -10,7 +11,7 @@ const handleSignIn = (navigation: (string: string) => void) => {
     const password = document.getElementById("login__password") as HTMLInputElement;
 
     if (containerRegex.email(email.value.trim()) && containerRegex.password(password.value.trim())) {
-        axios.post(domainBE + "/login", {
+        axios.post(obEnv.VITE_DOMAIN_BE + "/login", {
             email: email.value.trim(),
             password: password.value.trim()
         }, {

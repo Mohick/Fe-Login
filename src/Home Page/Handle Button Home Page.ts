@@ -1,7 +1,8 @@
 import axios from "axios"
 import { checkFormInputFromUser } from "../Check Form Input Create Account/Check Form Input"
 import HandleDomUpdate from "./Handle Update Account/Handle Update Account"
-import { domainBE } from "../URL"
+import { obEnv } from "../Evironment/Evironment"
+
 
 
 
@@ -89,7 +90,7 @@ const handleButtonEditAccount = (oldUsename: string, oldEmail: string, oldPasswo
     }
 }
 
-const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: string, oldEmail: string, oldPassword: string) => {
+const handleBuuttonLogOut = (navigation: (str: string) => void, oldUsename: string, oldEmail: string, oldPassword: string) => {
 
     const tagButtonLogOut = document.querySelector(".button__logout") as HTMLButtonElement
     const tagButton = document.querySelector(".button__edit") as HTMLButtonElement
@@ -97,12 +98,19 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
 
 
 
+
+
     switch (tagButtonLogOut.name) {
+
         case "logout":
-            axios.post(domainBE + "/logout", {}, {
+
+
+            axios.post(obEnv.VITE_DOMAIN_BE + "/logout", {}, {
                 withCredentials: true
-            }).then(() => {
-                navgation("/sign-in")
+            }).then((result) => {
+                console.log(result);
+
+                navigation("/sign-in")
             })
             break;
         case "exchange":
@@ -115,7 +123,7 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                 const divPassword = document.getElementById("home__page__info__password") as HTMLDivElement
                 if (divPassword.innerHTML.trim().length > 0) {
                     if (HandleDomUpdate.usename() && HandleDomUpdate.email() && HandleDomUpdate.password()) {
-                        axios.put(domainBE + "/update-account", {
+                        axios.put(obEnv.VITE_DOMAIN_BE + "/update-account", {
                             newUsername: divUsername.innerHTML.trim(),
                             newEmail: divEmail.innerHTML.trim(),
                             newPassword: divPassword.innerHTML.trim(),
@@ -143,7 +151,7 @@ const handleBuuttonLogOut = (navgation: (str: string) => void, oldUsename: strin
                     })
                     if (HandleDomUpdate.usename() && HandleDomUpdate.email()) {
                         if (divUsername.innerHTML.trim() !== oldUsename || divEmail.innerHTML.trim() !== oldEmail) {
-                            axios.put(domainBE + "/update-account", {
+                            axios.put(obEnv.VITE_DOMAIN_BE + "/update-account", {
                                 newUsername: divUsername.innerHTML.trim(),
                                 newEmail: divEmail.innerHTML.trim(),
                                 newPassword: divPassword.innerHTML.trim(),

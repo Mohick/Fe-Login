@@ -1,6 +1,6 @@
 import axios from "axios";
 import HandleDomSignUp from "./Handle Dom Sign Up/Handle Dom Sign Up";
-import { domainBE } from "../URL";
+import { obEnv } from "../Evironment/Evironment";
 
 
 
@@ -22,7 +22,7 @@ const sendFormSignup = (navigation: any) => {
             username: username.value.trim() // corrected 'usename' to 'username'
         };
 
-        axios?.post(domainBE + '/createUser', dataFormUser, {
+        axios?.post(obEnv.VITE_DOMAIN_BE + '/createUser', dataFormUser, {
             headers: {
                 'Content-Type': 'application/json'
             },

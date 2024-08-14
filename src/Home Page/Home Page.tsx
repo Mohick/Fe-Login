@@ -12,6 +12,7 @@ import "./Home Page.css"
 import InfoInput from "../Model CSS/Info Input/Info Input";
 import EndLoading from "../Loading/End Loading";
 import InitLoading from "../Loading/Start Loading";
+import { motion } from "framer-motion";
 const HomePage = () => {
     const navigation = useNavigate();
     const { infoUser, callUser } = useCallInfoUser();
@@ -50,77 +51,94 @@ const HomePage = () => {
     if (!infoUser.haveData) return <InitLoading />
     return <div className="flex justify-center items-center min-h-screen min-w-screen">
         <EndLoading />
-        <FrameLayout className="w-[90%] sm:w-[600px]  flex flex-col gap-2">
-            <Title>
-                Trang Chủ
-            </Title>
+        {/* {process.env.REACT_APP_TITLE} */}
+        <motion.div initial={{
+            opacity: 0,
+            height: 0,
+            overflow: 'hidden',
+        }}
+            animate={{
+                opacity: 1,
+                height: "auto",
+            }}
+            transition={{
+                duration: 0.5,
+                type: "just",
+                delay: 0.3
+            }}
+        >
+            <FrameLayout className="w-[90%] sm:w-[600px]  flex flex-col gap-2">
+                <Title>
+                    Trang Chủ
+                </Title>
 
-            <div className="relative">
-                <Label>Tên Người Dùng</Label>
-                <div className="home__page__alert--username valid text-xs">
-                    Vui lòng nhập 6-30 ký tự, chỉ gồm chữ cái, số, dấu chấm hoặc gạch dưới .
-                </div>
-                <div id="home__page__info__username" className="text-base  outline-none min-h-[1.5rem] max-h-[1.5rem]">
-                    {infoUser.username}
-                </div>
-                <div className="home__page__info--unline">
+                <div className="relative">
+                    <Label>Tên Người Dùng</Label>
+                    <div className="home__page__alert--username valid text-xs">
+                        Vui lòng nhập 6-30 ký tự, chỉ gồm chữ cái, số, dấu chấm hoặc gạch dưới .
+                    </div>
+                    <div id="home__page__info__username" className="text-base  outline-none min-h-[1.5rem] max-h-[1.5rem]">
+                        {infoUser.username}
+                    </div>
+                    <div className="home__page__info--unline">
 
+                    </div>
                 </div>
-            </div>
-            <div className="relative">
-                <Label>email</Label>
-                <div className="home__page__alert--email valid text-xs">
-                    Vui lòng Nhập Email Mới Hoặc Giữ Nguyên !
-                </div>
-                <div id="home__page__info__email" className="text-base outline-none min-h-[1.5rem] max-h-[1.5rem]">
-                    {infoUser.email}
-                </div>
-                <div className="home__page__info--unline ">
+                <div className="relative">
+                    <Label>email</Label>
+                    <div className="home__page__alert--email valid text-xs">
+                        Vui lòng Nhập Email Mới Hoặc Giữ Nguyên !
+                    </div>
+                    <div id="home__page__info__email" className="text-base outline-none min-h-[1.5rem] max-h-[1.5rem]">
+                        {infoUser.email}
+                    </div>
+                    <div className="home__page__info--unline ">
 
+                    </div>
                 </div>
-            </div>
-            <div className="relative">
-                <Label>Mật Khẩu </Label>
-                <div className="home__page__alert--password text-yellow-500 text-xs">
-                    Vui lòng Nhập Mật Khẩu Mới Hoặc Giữ Nguyên !
-                </div>
-                <div id="home__page__info__password" className="text-base outline-none min-h-[1.5rem] max-h-[1.5rem]">
-                    {infoUser.password}
-                </div>
-                <div className="home__page__info--unline">
+                <div className="relative">
+                    <Label>Mật Khẩu </Label>
+                    <div className="home__page__alert--password text-yellow-500 text-xs">
+                        Vui lòng Nhập Mật Khẩu Mới Hoặc Giữ Nguyên !
+                    </div>
+                    <div id="home__page__info__password" className="text-base outline-none min-h-[1.5rem] max-h-[1.5rem]">
+                        {infoUser.password}
+                    </div>
+                    <div className="home__page__info--unline">
 
+                    </div>
                 </div>
-            </div>
-            <div id="home__page__edit" className="relative ">
-                <ListUl className="grid grid-cols-1 sm:grid-cols-2 justify-between mt-2 " classItems="list-item" listData={listData} />
-                <div className="mt-2">
-                    <InfoInput id="home__page__current__password" typeInput="password" nameLabel="Mật Khẩu Hiện Tại">
-                        Nhập Mật Khẩu Hiện Tại Của Bạn !
-                    </InfoInput>
+                <div id="home__page__edit" className="relative ">
+                    <ListUl className="grid grid-cols-1 sm:grid-cols-2 justify-between mt-2 " classItems="list-item" listData={listData} />
+                    <div className="mt-2">
+                        <InfoInput id="home__page__current__password" typeInput="password" nameLabel="Mật Khẩu Hiện Tại">
+                            Nhập Mật Khẩu Hiện Tại Của Bạn !
+                        </InfoInput>
 
+                    </div>
                 </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 mt-2 gap-3">
-                <Button name="disable" className="button__edit" onClick={() => {
-                    handleButtonEditAccount(
-                        infoUser.username,
-                        infoUser.email,
-                        infoUser.password
-                    )
-                }}>
-                    Chỉnh Sửa
-                </Button>
-                <Button className="button__logout" name="logout" onClick={() => {
-                    handleBuuttonLogOut(navigation,
-                        infoUser.username,
-                        infoUser.email,
-                        infoUser.password
-                    )
-                }}>
-                    Đăng Xuất
-                </Button>
-            </div>
-        </FrameLayout>
+                <div className="grid grid-cols-1 sm:grid-cols-2 mt-2 gap-3">
+                    <Button name="disable" className="button__edit" onClick={() => {
+                        handleButtonEditAccount(
+                            infoUser.username,
+                            infoUser.email,
+                            infoUser.password
+                        )
+                    }}>
+                        Chỉnh Sửa
+                    </Button>
+                    <Button className="button__logout" name="logout" onClick={() => {
+                        handleBuuttonLogOut(navigation,
+                            infoUser.username,
+                            infoUser.email,
+                            infoUser.password
+                        )
+                    }}>
+                        Đăng Xuất
+                    </Button>
+                </div>
+            </FrameLayout>
+        </motion.div>
     </div>;
 };
 

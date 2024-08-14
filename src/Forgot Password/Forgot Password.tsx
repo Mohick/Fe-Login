@@ -6,7 +6,7 @@ import Title from "../Model CSS/Title/Title"
 
 
 const ForgotPassword = () => {
-    // đang phát triễn , during process develop
+    
     return <div className="min-w-screen min-h-screen flex justify-center items-center">
         <FrameLayout className="w-[500px]">
             <Title>Forgot Password</Title>

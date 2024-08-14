@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import axios from 'axios';
-import { domainBE } from '../URL';
+import { obEnv } from '../Evironment/Evironment';
+
 
 
 
@@ -35,7 +36,7 @@ const useCallInfoUser = create<Options>((set) => ({
     callUser: async () => {
         try {
 
-            await axios.get(domainBE + "/automatic-login".trim(), { withCredentials: true }).then((response: {
+            await axios.get(obEnv.VITE_DOMAIN_BE + "/automatic-login".trim(), { withCredentials: true }).then((response: {
                 data: {
                     login: boolean,
                     verified: boolean,

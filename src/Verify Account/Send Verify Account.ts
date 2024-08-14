@@ -1,5 +1,6 @@
 import axios from "axios";
-import { domainBE } from "../URL";
+import { obEnv } from "../Evironment/Evironment";
+
 
 
 
@@ -9,7 +10,7 @@ const sendVerifyAccount = (navigation: (string: string) => void) => {
     const regex = /^\d{6}$/;
     const alert = document.querySelector(".verify__account__code-alert")
     if (regex.test(verifyAccount.value.trim())) {
-        axios.put(`${domainBE.trim()}/verify-account`, {
+        axios.put(`${obEnv.VITE_DOMAIN_BE.trim()}/verify-account`, {
             verificationCode: verifyAccount.value
         }, {
             headers: {
@@ -42,7 +43,7 @@ const createNewVerifyAccount = () => {
     const btnReSendVerifyAccount = document.querySelector(".btn__re__send--verify")
 
     if (!btnReSendVerifyAccount?.classList.contains("disable")) {
-        axios.post(`${domainBE.trim()}/re-new-verify`, {}, {
+        axios.post(`${obEnv.VITE_DOMAIN_BE.trim()}/re-new-verify`, {}, {
             headers: {
                 'Content-Type': 'application/json'
             },
