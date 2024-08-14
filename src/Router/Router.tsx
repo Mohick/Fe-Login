@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, useEffect } from "react";
+import { lazy } from "react";
 
 
 

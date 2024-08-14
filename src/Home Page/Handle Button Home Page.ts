@@ -133,7 +133,7 @@ const handleBuuttonLogOut = (navigation: (str: string) => void, oldUsename: stri
                         }).then(response => {
                             const res = response.data
                             if (res.valid) {
-                                navgation("/sign-in")
+                                navigation("/sign-in")
 
                             } else {
                                 alertCurrentPassword.innerHTML = res.message
@@ -161,7 +161,7 @@ const handleBuuttonLogOut = (navigation: (str: string) => void, oldUsename: stri
                             }).then(response => {
                                 const res = response.data
                                 if (res.valid) {
-                                    navgation("/sign-in")
+                                    navigation("/sign-in")
                                     handleButtonEditAccount(
                                         oldUsename,
                                         oldEmail,

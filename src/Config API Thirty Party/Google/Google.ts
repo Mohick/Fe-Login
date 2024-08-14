@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 
-import { signInWithPopup, GoogleAuthProvider, getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, getAuth } from "firebase/auth";
 import { checkFormInputFromUser } from "../../Check Form Input Create Account/Check Form Input";
 import axios from "axios";
 import { obEnv } from "../../Evironment/Evironment";
